@@ -17,7 +17,7 @@ namespace Infrastructure.Tenancy
             return services.AddDbContext<TenantDbContext>(options =>
             {
                 options.UseSqlServer(config.GetConnectionString("DefaultConnection"));
-            }).AddMultiTenant<ABCSchoolTenantInfo>().WithHeaderStrategy("tenant").WithClaimStrategy("tenant")
+            }).AddMultiTenant<ABCSchoolTenantInfo>().WithHeaderStrategy(TenancyConstance.TenantIdName).WithClaimStrategy(TenancyConstance.TenantIdName)
             .WithEFCoreStore<TenantDbContext, ABCSchoolTenantInfo>().Services;
         }
     }
